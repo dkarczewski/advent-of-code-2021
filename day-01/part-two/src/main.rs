@@ -35,9 +35,7 @@ fn main() {
 fn count_incremental_measurements(measurements: Vec<usize>) -> usize {
     measurements
         .windows(4)
-        .filter(|item| {
-            item[0..3].into_iter().sum::<usize>() < item[1..4].into_iter().sum::<usize>()
-        })
+        .filter(|item| item[0..3].iter().sum::<usize>() < item[1..4].iter().sum::<usize>())
         .count()
 }
 
@@ -46,7 +44,7 @@ fn parse_file_to_vector(file_name: &Path) -> std::io::Result<Vec<usize>> {
     let reader = BufReader::new(file);
     Ok(reader
         .lines()
-        .map(|line| line.ok().and_then(|s| s.parse::<usize>().ok()).unwrap_or(0))
+        .map(|line| line.ok().and_then(|s| s.parse::<usize>().ok()).unwrap())
         .collect::<Vec<usize>>())
 }
 
