@@ -44,7 +44,7 @@ fn parse_file_to_vector(file_name: &Path) -> std::io::Result<Vec<usize>> {
     let reader = BufReader::new(file);
     Ok(reader
         .lines()
-        .map(|line| line.ok().and_then(|s| s.parse::<usize>().ok()).unwrap_or(0))
+        .map(|line| line.unwrap().parse::<usize>().unwrap())
         .collect::<Vec<usize>>())
 }
 
