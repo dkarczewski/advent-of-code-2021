@@ -84,7 +84,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<_>>();
 
     for (p1, p2) in points {
-        // println!("{:?} {:?}", p1, p2);
         match (p1, p2) {
             // Horizontal line
             (p1, p2) if p1.x == p2.x => {
